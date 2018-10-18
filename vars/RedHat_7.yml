@@ -1,0 +1,9 @@
+---
+
+# TODO: ensure DNS is working
+#  e.g. check with shell method (dig name +short) etc.
+#  Maybe separte role
+
+# sesam client package 
+sesam_client_package:
+  - http://download.sep.de/linux/RedHat/x86_64/RHEL7/sesam_cli-4.4.3-62.rhel7.x86_64.rpm 

@@ -1,0 +1,7 @@
+---
+
+- name: ensure sesam client is installed
+  package:
+          name: "{{ sesam_client_package }}"
+          state: present
+

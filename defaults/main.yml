@@ -1,0 +1,8 @@
+---
+
+sesam_server_name: sesam_server_example.com
+
+sesam_client_name: "{{ ansible_fqdn }}"
+
+sesam_client_backup_dirs:
+   - /etc

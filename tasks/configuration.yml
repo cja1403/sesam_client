@@ -1,0 +1,25 @@
+---
+
+- name: ensure client is registered
+  shell: |
+    sm_cmd add client {{ sesam_client_name }} -o LINUX
+  register: client_register
+  delegate_to: "{{ sesam_server_name }}"
+
+- name: debug_output
+  debug:
+    var: client_register
+
+- name: check name resolution server
+  command: 'sm_setup check_resolution {{ sesam_server_name }}'
+
+- name: check name resolution client
+  command: 'sm_setup check_resolution {{ sesam_client_name }}'
+  delegate_to: "{{ sesam_server_name }}"
+
+- name: ensure backup tasks are created
+  shell: |
+      sm_cmd -v 2 add task {{ ansible_hostname + item|replace("/","_") }} -c {{ sesam_client_name }}  -s {{ item }}
+  register: task_creation
+  with_items: "{{ sesam_client_backupdirs }}"
+
